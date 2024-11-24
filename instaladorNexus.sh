@@ -40,17 +40,25 @@ else
   echo "Docker já está instalado."
 fi
 
-# Verificando a instalação do Docker Compose
+# Verifica se o Docker Compose está instalado
 if ! docker compose version &> /dev/null && ! docker-compose --version &> /dev/null; then
   echo "Docker Compose não encontrado. Instalando Docker Compose..."
 
-  # Atualiza pacotes e instala o plugin do docker-compose
-  sudo apt update -y
-  sudo apt install -y docker-compose-plugin || { echo "Erro ao instalar Docker Compose"; exit 1; }
+  # Faz o download do Docker Compose
+  sudo curl -SL https://github.com/docker/compose/releases/download/v2.30.3/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
 
-  echo "Docker Compose instalado com sucesso."
+  # Torna o binário executável
+  sudo chmod +x /usr/local/bin/docker-compose
+
+  # Verifica se a instalação foi bem-sucedida
+  if docker compose version &> /dev/null || docker-compose --version &> /dev/null; then
+    echo "Docker Compose instalado com sucesso. Versão: $(docker compose version || docker-compose --version)"
+  else
+    echo "Erro ao instalar Docker Compose."
+    exit 1
+  fi
 else
-  echo "Docker Compose já está instalado."
+  echo "Docker Compose já está instalado. Versão: $(docker compose version || docker-compose --version)"
 fi
 
 
