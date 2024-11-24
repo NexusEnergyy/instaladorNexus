@@ -1,4 +1,3 @@
-  GNU nano 7.2                                                                                                                                                                                                                                                                                                       ./instaladorNexus.sh                                                                                                                                                                                                                                                                                                                 
 #!/bin/bash
 
 echo "Seja bem-vindo ao instalador do NexusEnergy"
