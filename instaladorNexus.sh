@@ -23,10 +23,16 @@ if ! git --version &> /dev/null; then
   echo "Git não encontrado. Instalando Git..."
   sudo apt update -y
   sudo apt install -y git || { echo "Erro ao instalar Git"; exit 1; }
+  
   echo "Git instalado com sucesso."
 else
   echo "Git já está instalado."
 fi
+clear
+
+echo "Clonando o repositório do projeto..."
+git clone https://github.com/NexusEnergyy/nexusEnergy-app.git || { echo "Erro ao clonar o repositório"; exit 1; }
+clear
 
 # Verificando a instalação do Docker
 if ! command -v docker &> /dev/null
