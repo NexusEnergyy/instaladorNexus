@@ -60,7 +60,7 @@ if ! docker compose version &> /dev/null && ! docker-compose --version &> /dev/n
 else
   echo "Docker Compose já está instalado. Versão: $(docker compose version || docker-compose --version)"
 fi
-
+clear
 
 # Construindo e iniciando containers com Docker Compose
 echo "Construindo e iniciando containers com Docker Compose..."
